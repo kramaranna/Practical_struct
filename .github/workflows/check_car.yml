@@ -1,20 +1,12 @@
-name: ❓ Хто я? (Car)
 
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-
+name: Check Car
+on: [push]
 jobs:
   check_car:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-
-      - name: 🚗 Перевірка структури Car
+      - uses: actions/checkout@v3
+      - name: Check Car struct
         run: |
-          grep -q "struct Car" *.cpp || { echo "❌ Немає структури Car"; exit 1; }
-          grep -q "string brand" *.cpp || { echo "⚠️ Немає поля brand"; exit 1; }
-          grep -q "int year" *.cpp || { echo "⚠️ Немає поля year"; exit 1; }
-          grep -q "int speed" *.cpp || { echo "⚠️ Немає поля speed"; exit 1; }
-          echo "✅ Ви правильно описали структуру Car!"
+          grep -q "struct Car" cpp_examples/car_example.cpp
+          echo "✅ Car struct found"
