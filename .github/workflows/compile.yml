@@ -1,21 +1,14 @@
-name: 🧩 Компіляція програми
 
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-
+name: Compile Program
+on: [push]
 jobs:
   compile:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-
-      - name: 🛠️ Компіляція
+      - uses: actions/checkout@v3
+      - name: Compile all cpp examples
         run: |
-          g++ *.cpp -o program
-          echo "✅ Програму успішно скомпільовано!"
-
-      - name: 🚀 Запуск програми
-        run: |
-          ./program || echo "⚠️ Програму запущено, але перевірте вивід."
+          for file in cpp_examples/*.cpp; do
+            g++ "$file" -o "${file%.cpp}.out" || exit 1
+          done
+          echo "✅ All cpp examples compiled"
