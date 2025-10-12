@@ -6,11 +6,11 @@ struct Book {
     string title;
     int pages;
     float price;
-    // 👈 студенти можуть додати поле author
+    // 👈  додати поле author
 };
 
 int main() {
-    Book library[2]; // 👈 студенти заповнюють книги
+    Book library[2]; // 👈  заповнити книги
 
     // for (...) { ... } — дописати цикл
 

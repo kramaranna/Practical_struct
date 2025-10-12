@@ -6,7 +6,7 @@ struct Car {
     string brand;
     int year;
     int speed;
-    // 👈 Можна додати поле color
+    // 👈  додати поле color
 };
 
 int main() {
