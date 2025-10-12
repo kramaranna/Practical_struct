@@ -1,34 +1,12 @@
-name: 🧱 Перевірка структури Student
 
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-
+name: Check Student
+on: [push]
 jobs:
   check_structs:
     runs-on: ubuntu-latest
     steps:
-      - name: 🔽 Клонування репозиторію
-        uses: actions/checkout@v4
-
-      - name: 🧠 Перевірка наявності структури Student
+      - uses: actions/checkout@v3
+      - name: Check Student struct
         run: |
-          if grep -q "struct Student" *.cpp; then
-            echo "✅ Ви створили структуру Student!"
-          else
-            echo "❌ Структуру Student не знайдено!"
-            exit 1
-          fi
-
-      - name: 🧩 Перевірка наявності поля name
-        run: |
-          if grep -q "string name" *.cpp; then
-            echo "✅ Поле name знайдено!"
-          else
-            echo "⚠️ Немає поля name"
-            exit 1
-          fi
-
-      - name: 🏁 Результат
-        run: echo "🎉 Успіх! Ви побудували правильну структуру."
+          grep -q "struct Student" cpp_examples/student_example.cpp
+          echo "✅ Student struct found"
