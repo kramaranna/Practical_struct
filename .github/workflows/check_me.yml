@@ -1,0 +1,20 @@
+name: 🧍 Структура мого життя
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  check_me:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 🧩 Перевірка структури Me
+        run: |
+          grep -q "struct Me" *.cpp || { echo "❌ Структура Me не знайдена"; exit 1; }
+          grep -q "string name" *.cpp || { echo "⚠️ Немає поля name"; exit 1; }
+          grep -q "string hobby" *.cpp || { echo "⚠️ Немає поля hobby"; exit 1; }
+          grep -q "int age" *.cpp || { echo "⚠️ Немає поля age"; exit 1; }
+          echo "✅ Структура Me створена правильно!"
