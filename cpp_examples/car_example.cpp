@@ -4,7 +4,7 @@ using namespace std;
 
 struct Car {
     string brand;
-    int year;
+    int year; 
     int speed;
     string colour;
 };
